@@ -1,0 +1,23 @@
+---
+title: "Running Analysis"
+author: "Grace Abels"
+date: "2022-11-02"
+output: pdf_document
+---
+
+```{r load packages, message=FALSE, warning=FALSE, echo=FALSE}
+library(tidyverse)
+library(knitr)
+library(lubridate)
+```
+
+```{r read in data, message=FALSE, warning=FALSE, echo=FALSE}
+runs <- read.csv("allruns.csv")
+```
+
+
+```{r}
+
+
+```
+
