@@ -12,12 +12,46 @@ library(lubridate)
 ```
 
 ```{r read in data, message=FALSE, warning=FALSE, echo=FALSE}
-runs <- read.csv("allruns.csv")
+runs <- read.csv("allruns2.csv")
+runs["14", "kcal"] <- 331
 ```
 
 
 ```{r}
-
+runs %>%
+  group_by(run_type) %>%
+  count()
+runs %>% 
+  filter(run_type == "Music") %>%
+  group_by(morn_aft) %>%
+  summarise(`Average Distance` = mean(miles), 
+            `Average Speed` = mean(avg_speed), 
+            `Average BPM` = mean(avg_bpm), 
+            `Average Strive Score` = mean(strive_score), 
+            `Average kCal` = mean(kcal), 
+            `Average Run Time` = mean(run_time))
 
 ```
+```{r}
+runs %>% 
+  group_by(instructor)%>%
+  summarise(count = n(),
+            `Average Distance` = mean(miles), 
+            `Average Speed` = mean(avg_speed), 
+            `Average BPM` = mean(avg_bpm), 
+            `Average Strive Score` = mean(strive_score), 
+            `Average kCal` = mean(kcal), 
+            `Average Run Time` = mean(run_time))
+runs %>% 
+  group_by(run_type)%>%
+  summarise(count = n(),
+            `Average Distance` = mean(miles), 
+            `Average Speed` = mean(avg_speed), 
+            `Average BPM` = mean(avg_bpm), 
+            `Average Strive Score` = mean(strive_score), 
+            `Average kCal` = mean(kcal), 
+            `Average Run Time` = mean(run_time))
+
+```
+
 
